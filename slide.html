@@ -516,7 +516,35 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </div>
 </section><section class="slide level2">
 <h2>著書(共著)</h2>
+<div class="column1">
 <p><img src="slide_img/datasci.jpg" alt="book" /></p>
+</div>
+<div class="column2">
+<ul>
+<li class="fragment">2部構成</li>
+<li class="fragment">第一部(基礎編)
+<ul>
+<li class="fragment">R 入門</li>
+<li class="fragment">R のデータハンドリング基礎</li>
+</ul></li>
+<li class="fragment">第二部(応用編)
+<ul>
+<li class="fragment">テキストマイニング</li>
+<li class="fragment">R のパフォーマンス向上</li>
+<li class="fragment">地理データ解析</li>
+<li class="fragment">ベイズ最適化入門</li>
+<li class="fragment">…etc</li>
+</ul></li>
+</ul>
+</div>
+</section><section class="slide level2">
+<h2>お仕事</h2>
+<ul>
+<li class="fragment">スマホのチャットアプリのログ解析(インターン)</li>
+<li class="fragment">Web 広告の配信最適化(インターン)</li>
+<li class="fragment">自然言語処理系、画像解析(現インターン)</li>
+<li class="fragment">お仕事募集してます…!</li>
+</ul>
 </section><section class="slide level2">
 <h2>作ったパッケージ</h2>
 <h3 id="mlbayesopt"><a href="https://github.com/ymattu/MlBayesOpt">MlBayesOpt</a></h3>
@@ -4061,6 +4089,35 @@ kaijou &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {
 <ul>
 <li class="fragment"><code>devtools::load_all()</code> を使います</li>
 </ul>
+</section><section class="slide level2">
+<h2>パッケージの中にデータを組み込みたいとき</h2>
+<ul>
+<li class="fragment">サンプルデータなど</li>
+<li class="fragment">例: <strong>ggplot2</strong> の mpg データ</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(ggplot2<span class="op">::</span>mpg)</code></pre></div>
+<pre><code># A tibble: 6 x 11
+  manufacturer model displ  year   cyl trans drv     cty   hwy fl    class
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+1 audi         a4     1.80  1999     4 auto… f        18    29 p     comp…
+2 audi         a4     1.80  1999     4 manu… f        21    29 p     comp…
+3 audi         a4     2.00  2008     4 manu… f        20    31 p     comp…
+4 audi         a4     2.00  2008     4 auto… f        21    30 p     comp…
+5 audi         a4     2.80  1999     6 auto… f        16    26 p     comp…
+6 audi         a4     2.80  1999     6 manu… f        18    26 p     comp…</code></pre>
+</section><section id="alsousethis" class="slide level2">
+<h2>これも <strong>usethis</strong> パッケージ</h2>
+<ul>
+<li class="fragment"><code>R</code> フォルダ内にデータを作るスクリプトを作成()</li>
+<li class="fragment"><code>usethis::use_data()</code> でよしなにやってくれる
+<ul>
+<li class="fragment"><code>data</code> フォルダを作って勝手に拡張子を調整して入れてくれる</li>
+</ul></li>
+<li class="fragment">オブジェクトにはドキュメントが必要
+<ul>
+<li class="fragment"><a href="https://github.com/tidyverse/ggplot2/blob/39e4a3bdb910a0344e2f75a5ade2e4f27e263a62/R/data.R#L88" class="uri">https://github.com/tidyverse/ggplot2/blob/39e4a3bdb910a0344e2f75a5ade2e4f27e263a62/R/data.R#L88</a> などを参照</li>
+</ul></li>
+</ul>
 </section></section>
 <section><section class="titleslide slide level1"><h1>パッケージの骨組みができたなと思ったら</h1></section><section class="slide level2">
 <h2>パッケージに問題がないかチェック</h2>
@@ -4080,16 +4137,65 @@ kaijou &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {
 </ul></li>
 </ul>
 </section></section>
-<section><section id="aftercheck" class="titleslide slide level1"><h1>check に合格したら</h1></section><section id="pushgithub" class="slide level2">
+<section><section id="aftercheck" class="titleslide slide level1"><h1>check に合格したら</h1></section><section id="addreadme" class="slide level2">
+<h2>もう少しドキュメント を準備</h2>
+<ul>
+<li class="fragment"><code>usethis::use_readme_rmd()</code> で作られた <code>.Rmd</code> ファイルにパッケージの説明を書く
+<ul>
+<li class="fragment">これは GitHub のトップに表示されるのであったほうがいい</li>
+</ul></li>
+<li class="fragment">もっと詳しいドキュメントを書きたいときは <strong>pkgdown</strong> パッケージが便利
+<ul>
+<li class="fragment"><a href="https://kazutan.github.io/HijiyamaR5/rmd_trend.html#/pkgdown" class="uri">https://kazutan.github.io/HijiyamaR5/rmd_trend.html#/pkgdown</a> を参照</li>
+</ul></li>
+</ul>
+</section><section id="pushgithub" class="slide level2">
 <h2>GitHub に Push!</h2>
-<p>これで <code>devtools::install_github()</code> でインストールできるようになります</p>
+<ul>
+<li class="fragment">RStudio のターミナルで以下を入力</li>
+</ul>
+<pre><code>git remote add origin https://github.com/ユーザー名/レポジトリ名</code></pre>
+<ul>
+<li class="fragment">RStudio の Git タブ(右上)でファイルにチェックをいれる</li>
+<li class="fragment">Commit ボタンを押して変更履歴のメッセージを入力</li>
+<li class="fragment">Push をクリック</li>
+</ul>
+</section><section class="slide level2">
+<h2>完了！</h2>
+<p>これで <code>devtools::install_github(&quot;ユーザー名/パッケージ名&quot;)</code> でインストールできるようになります</p>
 </section></section>
 <section><section class="titleslide slide level1"><h1>まとめ</h1></section><section class="slide level2">
 <h2>結局</h2>
 <ul>
-<li class="fragment">R パッケージを作るのは意外と難しくない!</li>
-<li class="fragment">こんな感じでパッケージを作って友達を助けました。</li>
-<li class="fragment">(おいしい食事を落ちそうになりました)</li>
+<li class="fragment">R のパッケージを作るのって難しいんじゃないの？
+<ul>
+<li class="fragment">いいえ、難しくありません</li>
+<li class="fragment">ほとんどのことはクリックと幾つかの関数が勝手にやってくれます。</li>
+</ul></li>
+<li class="fragment">R のパッケージを公開するのって難しいんじゃないの？
+<ul>
+<li class="fragment">いいえ、難しくありません</li>
+<li class="fragment">難しいのは CRAN であって GitHub なら RStudio 上で完結</li>
+</ul></li>
+<li class="fragment">パッケージ作ったって誰も使わないんじゃ？
+<ul>
+<li class="fragment">はい、使いません。</li>
+<li class="fragment">でも世界で一人くらい幸せになれるかも</li>
+</ul></li>
+</ul>
+</section><section class="slide level2">
+<h2>パッケージ、作ってみません？</h2>
+<p>おすすめの流れ</p>
+<ul>
+<li class="fragment">とりあえず作ってみる</li>
+<li class="fragment">とりあえずGitHubで公開してみる</li>
+<li class="fragment">Fukuoka.RやTokyo.RでLTする</li>
+<li class="fragment">気が向いたらCRANに公開する</li>
+<li class="fragment">誰も使わないんじゃないの？
+<ul>
+<li class="fragment">最悪僕が使います。</li>
+<li class="fragment">Twitter で <span class="citation" data-cites="y__mattu">@y__mattu</span> にメンションかDMくれれば使用感を伝えます。</li>
+</ul></li>
 </ul>
 </section><section class="slide level2">
 <h2>このスライドについて</h2>

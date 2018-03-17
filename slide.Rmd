@@ -55,7 +55,28 @@ options(dplyr.print_max = 1e9)
 </div>
 
 ## 著書(共著)
+<div class="column1">
 ![book](./slide_img/datasci.jpg)
+</div>
+
+<div class="column2">
+- 2部構成
+- 第一部(基礎編)
+    - R 入門
+    - R のデータハンドリング基礎
+- 第二部(応用編)
+    - テキストマイニング
+    - R のパフォーマンス向上
+    - 地理データ解析
+    - ベイズ最適化入門
+    - ...etc
+</div>
+
+## お仕事
+- スマホのチャットアプリのログ解析(インターン)
+- Web 広告の配信最適化(インターン)
+- 自然言語処理系、画像解析(現インターン)
+- お仕事募集してます...!
 
 ## 作ったパッケージ
 ### [MlBayesOpt](https://github.com/ymattu/MlBayesOpt)
@@ -69,6 +90,7 @@ options(dplyr.print_max = 1e9)
 ### [HindiMorph](https://github.com/ymattu/HindiMorph)
 - ヒンディ語の形態素解析器のラッパーパッケージ
 - **今日はこの話と、パッケージの作り方入門的な話を。**
+
 
 # 改めて、今回の内容
 ## R のパッケージ作成について
@@ -537,6 +559,22 @@ test_that("Moprph", {
 ## 作ってるパッケージ自体を読み込みたいときは
 - `devtools::load_all()` を使います
 
+## パッケージの中にデータを組み込みたいとき
+- サンプルデータなど
+- 例: **ggplot2** の mpg データ
+
+```{r}
+head(ggplot2::mpg)
+```
+
+## これも **usethis** パッケージ {#alsousethis}
+- `R` フォルダ内にデータを作るスクリプトを作成()
+- `usethis::use_data()` でよしなにやってくれる
+    - `data` フォルダを作って勝手に拡張子を調整して入れてくれる
+- オブジェクトにはドキュメントが必要
+    - https://github.com/tidyverse/ggplot2/blob/39e4a3bdb910a0344e2f75a5ade2e4f27e263a62/R/data.R#L88 などを参照
+
+
 # パッケージの骨組みができたなと思ったら
 ## パッケージに問題がないかチェック
 - `devtools::check()`
@@ -550,14 +588,48 @@ test_that("Moprph", {
     - CRAN に登録したいときは note も出来る限り消す
 
 # check に合格したら {#aftercheck}
+## もう少しドキュメント を準備 {#addreadme}
+- `usethis::use_readme_rmd()` で作られた `.Rmd` ファイルにパッケージの説明を書く
+    - これは GitHub のトップに表示されるのであったほうがいい
+- もっと詳しいドキュメントを書きたいときは **pkgdown** パッケージが便利
+    - https://kazutan.github.io/HijiyamaR5/rmd_trend.html#/pkgdown を参照
+
 ## GitHub に Push! {#pushgithub}
-これで `devtools::install_github()` でインストールできるようになります
+- RStudio のターミナルで以下を入力
+
+```
+git remote add origin https://github.com/ユーザー名/レポジトリ名
+```
+
+- RStudio の Git タブ(右上)でファイルにチェックをいれる
+- Commit ボタンを押して変更履歴のメッセージを入力
+- Push をクリック
+
+## 完了！
+これで `devtools::install_github("ユーザー名/パッケージ名")` でインストールできるようになります
 
 # まとめ
 ## 結局
-- R パッケージを作るのは意外と難しくない!
-- こんな感じでパッケージを作って友達を助けました。
-- (おいしい食事を落ちそうになりました)
+- R のパッケージを作るのって難しいんじゃないの？
+    - いいえ、難しくありません
+    - ほとんどのことはクリックと幾つかの関数が勝手にやってくれます。
+- R のパッケージを公開するのって難しいんじゃないの？
+    - いいえ、難しくありません
+    - 難しいのは CRAN であって GitHub なら RStudio 上で完結
+- パッケージ作ったって誰も使わないんじゃ？
+    - はい、使いません。
+    - でも世界で一人くらい幸せになれるかも
+
+## パッケージ、作ってみません？
+おすすめの流れ
+
+- とりあえず作ってみる
+- とりあえずGitHubで公開してみる
+- Fukuoka.RやTokyo.RでLTする
+- 気が向いたらCRANに公開する
+- 誰も使わないんじゃないの？
+    - 最悪僕が使います。
+    - Twitter で @y__mattu にメンションかDMくれれば使用感を伝えます。
 
 ## このスライドについて
 - **revealjs** パッケージで作成
