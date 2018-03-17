@@ -554,7 +554,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </ul>
 <h3 id="rjumanpp"><a href="https://github.com/ymattu/rjumanpp">rjumanpp</a></h3>
 <ul>
-<li class="fragment">形態素解析機 JUMAN++の R ラッパー</li>
+<li class="fragment">形態素解析機 JUMAN++ の R ラッパー</li>
 <li class="fragment">最低限の機能しかないのでメンテ頑張ります…</li>
 </ul>
 <h3 id="hindimorph"><a href="https://github.com/ymattu/HindiMorph">HindiMorph</a></h3>
@@ -3840,24 +3840,23 @@ func2 &lt;-<span class="st"> </span>....</code></pre></div>
 <h2>DESCRIPTION</h2>
 <ul>
 <li class="fragment">パッケージの説明を書く</li>
-<li class="fragment">画像を挿入</li>
 </ul>
 </section><section id="man" class="slide level2">
 <h2>man</h2>
 <ul>
 <li class="fragment">パッケージのドキュメント(ヘルプ)を組み立てる元のファイル</li>
-<li class="fragment"><strong>roxgen</strong> パッケージで自動生成されるのでいじらない</li>
+<li class="fragment"><strong>roxgen2</strong> パッケージで自動生成されるのでいじらない</li>
 </ul>
 </section><section id="namespace" class="slide level2">
 <h2>NAMESPACE</h2>
 <ul>
 <li class="fragment">パッケージの依存関係とかが書かれるファイル</li>
-<li class="fragment"><strong>roxgen</strong> パッケージで自動生成されるのでいじらない</li>
+<li class="fragment"><strong>roxgen2</strong> パッケージで自動生成されるのでいじらない</li>
 </ul>
 </section><section id="rfolder" class="slide level2">
 <h2>R</h2>
 <ul>
-<li class="fragment">Rの関数を書いてくファオルダ</li>
+<li class="fragment">Rの関数を書いてくフォルダ</li>
 <li class="fragment"><code>.R</code> ファイルを追加していく</li>
 </ul>
 </section></section>
@@ -4056,7 +4055,8 @@ kaijou &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">context</span>(<span class="st">&quot;test-kaijou.R&quot;</span>)
 
 <span class="kw">test_that</span>(<span class="st">&quot;multiplication works&quot;</span>, {
-  <span class="kw">expect_equal</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">4</span>)
+  res &lt;-<span class="st"> </span><span class="kw">kaijou</span>(<span class="dv">2</span>,<span class="dv">3</span>)
+  <span class="kw">expect_equal</span>(res, <span class="dv">8</span>)
 })</code></pre></div>
 </section><section id="hindimorph-hinditest" class="slide level2">
 <h2>HindiMorPhの場合 {hinditest}</h2>
@@ -4108,7 +4108,7 @@ kaijou &lt;-<span class="st"> </span><span class="cf">function</span> (a, b) {
 </section><section id="alsousethis" class="slide level2">
 <h2>これも <strong>usethis</strong> パッケージ</h2>
 <ul>
-<li class="fragment"><code>R</code> フォルダ内にデータを作るスクリプトを作成()</li>
+<li class="fragment"><code>R</code> フォルダ内にデータを作るスクリプトを作成(<code>data.R</code>)</li>
 <li class="fragment"><code>usethis::use_data()</code> でよしなにやってくれる
 <ul>
 <li class="fragment"><code>data</code> フォルダを作って勝手に拡張子を調整して入れてくれる</li>

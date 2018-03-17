@@ -84,7 +84,7 @@ options(dplyr.print_max = 1e9)
 - メンテ頑張ります...
 
 ### [rjumanpp](https://github.com/ymattu/rjumanpp)
-- 形態素解析機 JUMAN++の R ラッパー
+- 形態素解析機 JUMAN++ の R ラッパー
 - 最低限の機能しかないのでメンテ頑張ります...
 
 ### [HindiMorph](https://github.com/ymattu/HindiMorph)
@@ -325,18 +325,17 @@ func1(2, 5)
 
 ## DESCRIPTION
 - パッケージの説明を書く
-- 画像を挿入
 
 ## man
 - パッケージのドキュメント(ヘルプ)を組み立てる元のファイル
-- **roxgen** パッケージで自動生成されるのでいじらない
+- **roxgen2** パッケージで自動生成されるのでいじらない
 
 ## NAMESPACE
 - パッケージの依存関係とかが書かれるファイル
-- **roxgen** パッケージで自動生成されるのでいじらない
+- **roxgen2** パッケージで自動生成されるのでいじらない
 
 ## R {#rfolder}
-- Rの関数を書いてくファオルダ
+- Rの関数を書いてくフォルダ
 - `.R` ファイルを追加していく
 
 # まずはじめに
@@ -524,11 +523,12 @@ library(testthat)
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 context("test-kaijou.R")
 
 test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+  res <- kaijou(2,3)
+  expect_equal(res, 8)
 })
 ```
 
@@ -568,7 +568,7 @@ head(ggplot2::mpg)
 ```
 
 ## これも **usethis** パッケージ {#alsousethis}
-- `R` フォルダ内にデータを作るスクリプトを作成()
+- `R` フォルダ内にデータを作るスクリプトを作成(`data.R`)
 - `usethis::use_data()` でよしなにやってくれる
     - `data` フォルダを作って勝手に拡張子を調整して入れてくれる
 - オブジェクトにはドキュメントが必要
