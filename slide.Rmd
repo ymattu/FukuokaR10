@@ -464,10 +464,10 @@ hindi_morph <- function(data, text_col) {
 ##' @param b numeric
 ##' @author Yuya Matsumura
 ##' @examples
-##' @export
 ##' aa <- 3
 ##' bb <- 2
 ##' cc <- kaijou(3, 2)
+##' @export
 kaijou <- function (a, b) {
   res <- a ^ b
   return(res)
